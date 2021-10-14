@@ -14,39 +14,38 @@
     <h2>Harathi Katta reaction timer</h2>
     <p id="target">Your time</p>
     <p id="countdown">Count</p>
-    <button type="button" class="btn btn-secondary" onclick="recordReact()">Start Timer</button>
+    <button type="button" class="btn btn-secondary" onclick="startTime() ">Start Timer</button>
     <button type="button" class="btn btn-secondary" onclick="recordReact()">React Now</button>
+    <script>
+        var myTime = {}
+        function recordReact() {
+            myTime = Date.now()
+            console.log(myTime)
 
-    <script> 
-    function recordReact()
-    {
-        var  myTime={} 
-        myTime = Date.now()
-        console.log(myTime)
-    }
-
-    function startTime()
-    {
-        for (let i = 0; i <= 3; i++) 
-        {
-            var j = (3 - i) * 1000;
-            setTimeout(() => {document.getElementById("countdown").innerHTML = i;}, j)
         }
-        setTimeout(() =>
-        {
-            if (myTime == undefined)
-                document.getElementById("target").innerHTML = "Too Slow";
-            else 
-            {
-                var buttonTime = Date.now();
-                var diff = buttonTime - myTime;
-                document.getElementById("target").innerHTML = "Time was " + diff + " ms"
-                myTime = undefined
-            }
-        }, 3000)
-    }
 
-  </script>
+        function startTime() {
+            for (let i = 0; i <= 3; i++) {
+                var j = (3 - i) * 1000;
+                setTimeout(() => {
+                    document.getElementById("countdown").innerHTML = i;
+                }, j)
+            }
+            setTimeout(() => {
+                if (myTime == undefined)
+                    document.getElementById("target").innerHTML = "Too Slow";
+                else {
+                    var buttonTime = Date.now();
+                    var diff = buttonTime - myTime;
+
+                    document.getElementById("target").innerHTML = "Time was " + diff + " ms"
+                    myTime = undefined
+                }
+            }, 3000)
+        }
+    </script>
 
 </body>
 </html>
+
+

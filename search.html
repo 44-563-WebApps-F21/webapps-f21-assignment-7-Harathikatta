@@ -16,6 +16,7 @@
 <div class="container-fluid" style="color:crimson">Click on the squares to search for wild life.</div>
 <div class="container-fluid" id="tries" style="color:darkgreen" >Number of tries is zero</div>
 <div class="container-fluid" id="distance" style="color:darkslateblue">Distance is unknown.</div>
+<button id="reset" onclick="reset()">reset</button>
     <div class="container">
         <div class="row">
           <div class="col-sm-2"> <img src="plant.jpg" id="plant-00" onclick="check(0)" alt="Animal" width="200" height="200"></div>
@@ -59,7 +60,7 @@
             <div class="col-sm-2"> <img src="plant.jpg" id="plant-23" onclick="check(23)" alt="Animal" width="200" height="200"></div>
         </div>
     </div>
-
+    
     <script>
         var triesCount=0
         var animalLocation=13
@@ -81,7 +82,7 @@
                     var img_id2 = document.getElementById(plant_array[position])
                     img_id2.src = "dirt.jpg"
             }
-            let distance_of_forcast = distance(position, animalLocation);
+            let distance_of_forcast = distance(position, animalLocation)
             document.getElementById("distance").innerHTML = "Distance from onclick element to animalLocation (13) : " + distance_of_forcast
         }
 
@@ -110,8 +111,20 @@
             var animaldistance = Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1));
             return animaldistance;
         }
-    </script>
+    
+        function reset() 
+        {
+        triesCount = 0
+        animalLocation = Math.floor(Math.random() * 23 + 0)
+        document.getElementById("tries").innerHTML = "Number of tries is 0."
+        for (var i = 0; i < 24; i++)
+        {
+          if (plant_array[i] == plant_array[animalLocation])
+            document.getElementById(plant_array[i]).src = "RedPanda.jpg"
 
+        }
+        }
+</script>
 </body>
 </html>
 
